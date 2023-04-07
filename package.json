@@ -1,0 +1,24 @@
+{
+  "name": "marzipano-pano-tiler",
+  "version": "1.0.0",
+  "description": "node.js script that takes equirectangular panos and produces tiled cube-maps that suit Googles Marzipano viewer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessehhydee/marzipano-pano-tiler.git"
+  },
+  "author": "Jesse Hyde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessehhydee/marzipano-pano-tiler/issues"
+  },
+  "homepage": "https://github.com/jessehhydee/marzipano-pano-tiler#readme",
+  "dependencies": {
+    "join-images": "^1.1.3",
+    "panorama-to-cubemap": "^1.0.2",
+    "sharp": "^0.30.4"
+  }
+}
