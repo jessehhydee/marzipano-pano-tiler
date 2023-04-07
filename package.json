@@ -11,7 +11,7 @@
     "url": "git+https://github.com/jessehhydee/marzipano-pano-tiler.git"
   },
   "author": "Jesse Hyde",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jessehhydee/marzipano-pano-tiler/issues"
   },
