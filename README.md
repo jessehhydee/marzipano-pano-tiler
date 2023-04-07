@@ -8,5 +8,5 @@ This is a simple node.js script that produces the same output as Google's tool.
 This scripts output can be read by the Marzipano viewer in your application.
 
 Place your equirectangular image into the `./input/` dir.
+<br>
 Run script in terminal: `node index.js`
-
