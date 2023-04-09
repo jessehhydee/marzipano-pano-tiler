@@ -54,7 +54,7 @@ const createPanos = async () => {
   for(const image of images) {
     const cubeMapDir = await createCubeMap(image);
     await createPreviewImage(image, cubeMapDir);
-    createTiles(image, cubeMapDir);
+    await createTiles(image, cubeMapDir);
   };
 
 };
