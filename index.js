@@ -71,12 +71,19 @@ const createCubeMap = async (image) => {
 
   for(let i = 0; i < cubeMap.length; i++) {
 
-    cubeMap[i].filename = `${dir}/${fileNameConversions[getImageName(cubeMap[i].filename)]}.jpg`;
+    const fName = fileNameConversions[getImageName(cubeMap[i].filename)];
+
+    cubeMap[i].filename = `${dir}/${fName}.jpg`;
 
     if(!fs.existsSync(dir)) fs.mkdirSync(dir, { 
       recursive: true 
     });
     fs.writeFileSync(cubeMap[i].filename, cubeMap[i].buffer, "binary");
+
+    if(fName === 'd' || fName === 'u') {
+      const rotated = await sharp(`${dir}/${fName}.jpg`).rotate(180).toBuffer();
+      await sharp(rotated).toFile(`${dir}/${fName}.jpg`);
+    }
 
   };
 
@@ -120,18 +127,19 @@ const createTiles = async (image, cubeMapDir) => {
 
         if(layer === 0) sharp(`${cubeMapDir}/${cubeMapImages[i]}`).resize({width: 512}).toFile(`${dir}/0.jpg`);
         else {
-          for(let o = 0; o < tileHeight; o++)
+          for(let o = 0; o < tileHeight; o++) 
             sharp(`${cubeMapDir}/${cubeMapImages[i]}`)
               .extract({
-                width:  dimensions.w / tileHeight, 
-                height: dimensions.h / tileHeight, 
-                left:   dimensions.w / tileHeight * o, 
-                top:    dimensions.h / tileHeight * e
+                width:  Math.floor(dimensions.w / tileHeight), 
+                height: Math.floor(dimensions.h / tileHeight), 
+                left:   Math.floor(dimensions.w / tileHeight * o), 
+                top:    Math.floor(dimensions.h / tileHeight * e)
               })
               .resize({
                 width:  512
               })
               .toFile(`${dir}/${o}.jpg`);
+
         }
       };
     };
